@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback, useMemo, useReducer, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'motion/react'
-import { Mail, ExternalLink, Briefcase, GraduationCap, Award, Code, Globe, BadgeCheck, List, Rocket, BookOpen, ArrowUpRight, FolderKanban, Sparkles, Trophy } from 'lucide-react'
+import { Mail, ExternalLink, Briefcase, GraduationCap, Award, Code, Globe, BadgeCheck, List, Rocket, BookOpen, ArrowUpRight, FolderKanban, Sparkles, Trophy, FileDown } from 'lucide-react'
 import { translations, type Lang } from './i18n'
 import { getTechIcon } from './tech-icons'
 
@@ -1515,6 +1515,14 @@ function StorySection({ t }: { t: (typeof translations)[Lang] }) {
                 </a>
               )
             })}
+            <a
+              href="/resume.pdf"
+              download="Vivek_Peerlagudem_Resume.pdf"
+              className="flex items-center gap-2 px-4 py-2 rounded-full bg-card border border-border hover:border-primary/50 hover:bg-primary/5 transition-all duration-200 text-sm font-medium"
+            >
+              <FileDown className="w-4 h-4" />
+              Resume
+            </a>
           </motion.div>
         </motion.div>
       </div>
