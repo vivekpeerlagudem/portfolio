@@ -1,25 +1,5 @@
 @import "tailwindcss";
 
-/* 1. CSS Browser Reset & Normalization */
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-html {
-  -webkit-text-size-adjust: 100%;
-  text-size-adjust: 100%;
-  -moz-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-  color-scheme: dark light;
-}
-body {
-  margin: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-}
-
 /* Interactive elements should always show pointer cursor */
 button, a, [role="button"], summary { cursor: pointer; }
 
