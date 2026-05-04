@@ -118,6 +118,7 @@ function useHeroStyles() {
         );
         -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
         -webkit-mask-composite: xor;
+        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
         mask-composite: exclude;
         animation: beam-spin 2s linear infinite;
       }
@@ -280,7 +281,6 @@ function HomeToc() {
   const [hasRevealed, setHasRevealed] = useState(false)
   const [visible, setVisible] = useState(false)
   const [activeId, setActiveId] = useState('')
-  const [tocOpen, setTocOpen] = useState(false)
 
   // Show when #experience top reaches viewport, hide when user scrolls above it
   useEffect(() => {
@@ -322,7 +322,6 @@ function HomeToc() {
   const scrollTo = useCallback((id: string) => {
     const el = document.getElementById(id)
     if (!el) return
-    setTocOpen(false)
     const isLast = id === HOME_TOC_SECTIONS[HOME_TOC_SECTIONS.length - 1].id
     const top = isLast
       ? document.documentElement.scrollHeight - window.innerHeight
@@ -393,26 +392,6 @@ function HomeToc() {
             {tocNav}
           </motion.div>
 
-          {/* Mobile / narrow desktop: floating button + drawer */}
-          <motion.button
-            initial={hasRevealed ? { opacity: 0, scale: 0.8 } : false}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            transition={{ duration: 0.3 }}
-            onClick={() => setTocOpen(o => !o)}
-            className="2xl:hidden fixed bottom-6 right-6 z-40 w-11 h-11 rounded-full bg-primary text-primary-foreground shadow-lg flex items-center justify-center"
-            aria-label="Toggle table of contents"
-          >
-            <List className="w-5 h-5" />
-          </motion.button>
-          {tocOpen && (
-            <>
-              <div className="2xl:hidden fixed inset-0 bg-background/60 backdrop-blur-sm z-40" onClick={() => setTocOpen(false)} />
-              <div className="2xl:hidden fixed bottom-20 right-6 z-50 w-64 max-h-[70vh] overflow-y-auto bg-card border border-border rounded-xl shadow-xl p-4">
-                {tocNav}
-              </div>
-            </>
-          )}
         </>
       )}
     </AnimatePresence>
